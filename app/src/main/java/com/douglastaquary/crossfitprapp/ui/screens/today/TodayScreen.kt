@@ -5,6 +5,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,11 +28,29 @@ fun TodayScreen() {
     val records = todayViewModel.fetchPRInfo()
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Personal records", color = MaterialTheme.colors.onBackground, fontWeight = FontWeight.Bold, fontSize = 26.sp) }, backgroundColor = MaterialTheme.colors.background)
+            TopAppBar(title = { Text("Personal records", color = MaterialTheme.colors.onBackground, fontWeight = FontWeight.Bold, fontSize = 26.sp) }, backgroundColor = MaterialTheme.colors.background, modifier = Modifier.height(88.dp), elevation = 12.dp)
         }) { innerPadding ->
-        LazyColumn(contentPadding = innerPadding) {
-            items(records) { record ->
-                PRView(record)
+        Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
+            Spacer(Modifier.height(24.dp))
+            LazyColumn(contentPadding = innerPadding) {
+                items(records) { record ->
+                    PRView(record)
+                }
+            }
+            Spacer(Modifier.height(24.dp))
+            Button(
+                onClick = { /* ... */ },
+                // Uses ButtonDefaults.ContentPadding by default
+                contentPadding = PaddingValues(
+                    start = 124.dp,
+                    top = 16.dp,
+                    end = 124.dp,
+                    bottom = 16.dp
+                )
+            ) {
+                // Inner content including an icon and a text label
+                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+                Text("New record")
             }
         }
     }

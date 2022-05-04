@@ -9,13 +9,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 
 @Composable
 fun InsightScreen() {
@@ -41,30 +38,30 @@ fun InsightScreen() {
 fun InsightScreenPreview() {
     InsightScreen()
 }
-
-@Composable
-fun SettingsScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colors.background)
-            .wrapContentSize(Alignment.Center)
-    ) {
-        Text(
-            text = "Settings View",
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colors.onBackground,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            textAlign = TextAlign.Center,
-            fontSize = 25.sp
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun SettingsScreenPreview() {
-    SettingsScreen()
-}
+//
+//@Composable
+//fun SettingsScreen() {
+//    Column(
+//        modifier = Modifier
+//            .fillMaxSize()
+//            .background(MaterialTheme.colors.background)
+//            .wrapContentSize(Alignment.Center)
+//    ) {
+//        Text(
+//            text = "Settings View",
+//            fontWeight = FontWeight.Bold,
+//            color = MaterialTheme.colors.onBackground,
+//            modifier = Modifier.align(Alignment.CenterHorizontally),
+//            textAlign = TextAlign.Center,
+//            fontSize = 25.sp
+//        )
+//    }
+//}
+//
+//@Preview(showBackground = true)
+//@Composable
+//fun SettingsScreenPreview() {
+//    SettingScreen()
+//}
 
 

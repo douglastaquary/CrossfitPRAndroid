@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.*
@@ -17,7 +18,6 @@ import com.douglastaquary.crossfitprapp.ui.screens.InsightScreen
 import com.douglastaquary.crossfitprapp.ui.screens.SettingsScreen
 import com.douglastaquary.crossfitprapp.ui.screens.today.TodayScreen
 import com.douglastaquary.crossfitprapp.ui.theme.CrossfitPRAppTheme
-import java.util.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +29,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
@@ -48,6 +49,8 @@ fun MainScreenPreview() {
     MainScreen()
 }
 
+@ExperimentalComposeUiApi
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun Navigation(navController: NavHostController) {
     NavHost(navController, startDestination = NavigationItem.Today.route) {
