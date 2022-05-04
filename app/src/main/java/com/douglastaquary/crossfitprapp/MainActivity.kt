@@ -3,35 +3,28 @@ package com.douglastaquary.crossfitprapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.*
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
+import com.douglastaquary.crossfitprapp.ui.NavigationItem
+import com.douglastaquary.crossfitprapp.ui.screens.InsightScreen
+import com.douglastaquary.crossfitprapp.ui.screens.SettingsScreen
+import com.douglastaquary.crossfitprapp.ui.screens.today.TodayScreen
 import com.douglastaquary.crossfitprapp.ui.theme.CrossfitPRAppTheme
+import java.util.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             MainScreen()
-//            CrossfitPRAppTheme {
-//                // A surface container using the 'background' color from the theme
-//                Surface(
-//                    modifier = Modifier.fillMaxSize(),
-//                    color = MaterialTheme.colors.background
-//                ) {
-//                    Greeting("Android")
-//                }
-//            }
         }
     }
 }
@@ -39,12 +32,14 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
-    Scaffold(
-        topBar = { TopBar() },
-        bottomBar = { BottomNavigationBar(navController) }
-    ) {
-        Navigation(navController = navController)
-    }
+        CrossfitPRAppTheme {
+            Scaffold(
+                bottomBar = { BottomNavigationBar(navController) },
+                contentColor = MaterialTheme.colors.background
+            ) {
+                Navigation(navController = navController)
+            }
+        }
 }
 
 @Preview(showBackground = true)
@@ -68,26 +63,13 @@ fun Navigation(navController: NavHostController) {
     }
 }
 
-//@Composable
-//fun Greeting(name: String) {
-//    Text(text = "Hello $name!")
-//}
-//
-//@Preview(showBackground = true)
-//@Composable
-//fun DefaultPreview() {
-//    CrossfitPRAppTheme {
-//        Greeting("Android")
-//    }
-//}
-
 // TopBAR
 @Composable
 fun TopBar() {
     TopAppBar(
-        title = { Text(text = stringResource(R.string.app_name), fontSize = 18.sp) },
-        backgroundColor = colorResource(id = R.color.teal_700),
-        contentColor = Color.White
+        title = { Text(text = stringResource(R.string.app_name), fontSize = 18.sp, color = MaterialTheme.colors.onBackground) },
+        backgroundColor = MaterialTheme.colors.background,
+        contentColor = MaterialTheme.colors.background
     )
 }
 
@@ -106,8 +88,8 @@ fun BottomNavigationBar(navController: NavController) {
         NavigationItem.Settings,
     )
     BottomNavigation(
-        backgroundColor = colorResource(id = R.color.black),
-        contentColor = Color.White
+        backgroundColor = MaterialTheme.colors.background,
+        contentColor = MaterialTheme.colors.primary
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
@@ -115,8 +97,8 @@ fun BottomNavigationBar(navController: NavController) {
             BottomNavigationItem(
                 icon = { Icon(painterResource(id = item.icon), contentDescription = item.title) },
                 label = { Text(text = item.title) },
-                selectedContentColor = Color.White,
-                unselectedContentColor = Color.White.copy(0.4f),
+                selectedContentColor = MaterialTheme.colors.onBackground,
+                unselectedContentColor = MaterialTheme.colors.onBackground.copy(0.4f),
                 alwaysShowLabel = true,
                 selected = currentRoute == item.route,
                 onClick = {
@@ -140,10 +122,3 @@ fun BottomNavigationBar(navController: NavController) {
         }
     }
 }
-
-//
-//@Preview(showBackground = true)
-//@Composable
-//fun BottomNavigationBarPreview() {
-//    //BottomNavigationBar()
-//}

@@ -1,9 +1,10 @@
-package com.douglastaquary.crossfitprapp
+package com.douglastaquary.crossfitprapp.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -17,43 +18,17 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
 @Composable
-fun TodayScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(colorResource(id = R.color.black))
-            .wrapContentSize(Alignment.Center)
-    ) {
-        Text(
-            text = "Today View",
-            fontWeight = FontWeight.Bold,
-            color = Color.White,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            textAlign = TextAlign.Center,
-            fontSize = 25.sp
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun HomeScreenPreview() {
-    TodayScreen()
-}
-
-
-@Composable
 fun InsightScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorResource(id = R.color.black))
+            .background(MaterialTheme.colors.background)
             .wrapContentSize(Alignment.Center)
     ) {
         Text(
             text = "Insights View",
             fontWeight = FontWeight.Bold,
-            color = Color.White,
+            color = MaterialTheme.colors.onBackground,
             modifier = Modifier.align(Alignment.CenterHorizontally),
             textAlign = TextAlign.Center,
             fontSize = 25.sp
@@ -72,13 +47,13 @@ fun SettingsScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorResource(id = R.color.black))
+            .background(MaterialTheme.colors.background)
             .wrapContentSize(Alignment.Center)
     ) {
         Text(
             text = "Settings View",
             fontWeight = FontWeight.Bold,
-            color = Color.White,
+            color = MaterialTheme.colors.onBackground,
             modifier = Modifier.align(Alignment.CenterHorizontally),
             textAlign = TextAlign.Center,
             fontSize = 25.sp
