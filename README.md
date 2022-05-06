@@ -1,4 +1,4 @@
-<a href="http://iphone.artsy.net"><img src ="images/crossfitprapp_android_today_screen.png"></a>
+<a href="http://iphone.artsy.net"><img src ="images/screenshots_app.png"></a>
 
 # CrossfitPR App Android
 Organize your personal records in crossfit workouts
