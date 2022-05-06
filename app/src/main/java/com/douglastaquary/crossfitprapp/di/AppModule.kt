@@ -1,6 +1,8 @@
 package com.douglastaquary.crossfitprapp.di
 
 import com.douglastaquary.crossfitprapp.screens.viewModel.TodayViewModel
+import com.douglastaquary.crossfitprapp.ui.screens.viewModel.NewRecordViewModel
+import org.koin.androidx.compose.get
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
@@ -22,4 +24,6 @@ fun initKoin() = initKoin {}
 
 fun commonModule() = module {
     single { TodayViewModel(get()) }
+    single { NewRecordViewModel(get()) }
+
 }

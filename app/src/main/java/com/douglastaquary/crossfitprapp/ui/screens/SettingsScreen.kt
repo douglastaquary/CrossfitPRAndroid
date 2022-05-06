@@ -14,8 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.douglastaquary.crossfitprapp.model.Record
-import com.douglastaquary.crossfitprapp.ui.screens.today.dateToString
 
 @ExperimentalMaterialApi
 @ExperimentalComposeUiApi

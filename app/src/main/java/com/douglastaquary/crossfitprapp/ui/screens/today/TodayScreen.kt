@@ -5,25 +5,28 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.*
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.douglastaquary.crossfitprapp.R
 import com.douglastaquary.crossfitprapp.screens.viewModel.TodayViewModel
 import com.douglastaquary.crossfitprapp.model.Record
-import java.text.SimpleDateFormat
+import com.douglastaquary.crossfitprapp.model.dateToString
+import com.douglastaquary.crossfitprapp.ui.Screen
 import java.util.*
 import org.koin.androidx.compose.getViewModel
 
 //Text(text = stringResource(R.string.app_name), fontSize = 18.sp, color = MaterialTheme.colors.onBackground) }
 @Composable
-fun TodayScreen() {
+fun TodayScreen(navController: NavHostController) {
     val todayViewModel = getViewModel<TodayViewModel>()
     val records = todayViewModel.fetchPRInfo()
     Scaffold(
@@ -39,7 +42,8 @@ fun TodayScreen() {
             }
             Spacer(Modifier.height(24.dp))
             Button(
-                onClick = { /* ... */ },
+                onClick = { navController.navigate(Screen.NewRecord.route) },
+                colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.green)),
                 // Uses ButtonDefaults.ContentPadding by default
                 contentPadding = PaddingValues(
                     start = 124.dp,
@@ -50,16 +54,10 @@ fun TodayScreen() {
             ) {
                 // Inner content including an icon and a text label
                 Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                Text("New record")
+                Text("New record", color = Color.White)
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun TodayScreenPreview() {
-    TodayScreen()
 }
 
 @Composable
@@ -90,12 +88,4 @@ fun PRView(record: Record) {
 @Composable
 fun PRViewPreview() {
     PRView(record = Record(prName = "Air Squat (AS)", prValue = 120.0, percentage = 60, date = Date()))
-}
-
-fun Date.dateToString(format: String): String {
-    //simple date formatter
-    val dateFormatter = SimpleDateFormat(format, Locale.getDefault())
-
-    //return the formatted date string
-    return dateFormatter.format(this)
 }

@@ -13,8 +13,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
-import com.douglastaquary.crossfitprapp.ui.NavigationItem
+import com.douglastaquary.crossfitprapp.ui.Screen
 import com.douglastaquary.crossfitprapp.ui.screens.InsightScreen
+import com.douglastaquary.crossfitprapp.ui.screens.NewRecordScreen
 import com.douglastaquary.crossfitprapp.ui.screens.SettingsScreen
 import com.douglastaquary.crossfitprapp.ui.screens.today.TodayScreen
 import com.douglastaquary.crossfitprapp.ui.theme.CrossfitPRAppTheme
@@ -53,15 +54,18 @@ fun MainScreenPreview() {
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun Navigation(navController: NavHostController) {
-    NavHost(navController, startDestination = NavigationItem.Today.route) {
-        composable(NavigationItem.Today.route) {
-            TodayScreen()
+    NavHost(navController, startDestination = Screen.Today.route) {
+        composable(Screen.Today.route) {
+            TodayScreen(navController)
         }
-        composable(NavigationItem.Insights.route) {
+        composable(Screen.Insights.route) {
             InsightScreen()
         }
-        composable(NavigationItem.Settings.route) {
+        composable(Screen.Settings.route) {
             SettingsScreen()
+        }
+        composable(Screen.NewRecord.route) {
+            NewRecordScreen(popBack = { navController.popBackStack() })
         }
     }
 }
@@ -86,9 +90,9 @@ fun TopBarPreview() {
 @Composable
 fun BottomNavigationBar(navController: NavController) {
     val items = listOf(
-        NavigationItem.Today,
-        NavigationItem.Insights,
-        NavigationItem.Settings,
+        Screen.Today,
+        Screen.Insights,
+        Screen.Settings,
     )
     BottomNavigation(
         backgroundColor = MaterialTheme.colors.background,
